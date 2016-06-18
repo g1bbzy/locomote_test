@@ -123,4 +123,6 @@
 	padding:20px;
 	background: #eee;
 }
-
+.datepicker-with-results{
+	float: right;
+}

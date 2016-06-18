@@ -23,24 +23,38 @@
 function search(){
 	//Get values from interface
 	var from_destination = document.getElementById('from-destination').value;
-	var to_destination = document.getElementById('from-destination').value;
+	var to_destination = document.getElementById('to-destination').value;
 	var when = document.getElementById('date-picker').value;
-	console.log(when);
+	var from_code = '';
+	var to_code = '';
 
-
-	//style the page to support results
-	document.getElementById('search-container').className = 'search-container with-results';
-	document.getElementById('from-destination').className = 'input-with-results';
-	document.getElementById('to-destination').className = 'input-with-results';
-	document.getElementById('date-picker').className = 'input-with-results';
-	document.getElementById('from-title').className = 'float-left-to-title';
-	document.getElementById('to-title').className = 'float-left';
-	document.getElementById('date-title').className = 'float-left';
-	document.getElementById('search-button').className = 'search-button-results';
-	document.getElementById('title').className = 'title left';
-	document.getElementById('results-container').className = 'results-container';
-
-	renderTabs(when);
+	$.get("http://localhost:8080/airports?q="+from_destination, function(data, status){
+		if (data.length == 1){
+			//success
+			from_code = data[0].airportCode;
+			$.get("http://localhost:8080/airports?q="+to_destination, function(data, status){
+				if (data.length == 1){
+					//success
+					to_code = data[0].airportCode;
+					$.get("http://localhost:8080/search?date="+when.toString()+"&to="+to_code+"&from="+from_code, function(data, status){
+						console.log(data);
+						//style the page to support results
+						document.getElementById('search-container').className = 'search-container with-results';
+						document.getElementById('from-destination').className = 'input-with-results';
+						document.getElementById('to-destination').className = 'input-with-results';
+						document.getElementById('date-picker').className = 'input-with-results';
+						document.getElementById('from-title').className = 'float-left-to-title';
+						document.getElementById('to-title').className = 'float-left';
+						document.getElementById('date-title').className = 'float-left';
+						document.getElementById('search-button').className = 'search-button-results';
+						document.getElementById('title').className = 'title left';
+						document.getElementById('results-container').className = 'results-container';
+						renderTabs(when);
+					});
+				}
+		    });
+		}
+    });
 }
 
 function renderTabs(when){
@@ -59,7 +73,6 @@ function renderTabs(when){
 			
 		}
 	};
-
 	innerhtml += '</div>';
 	innerhtml += '<div class="flights-container"><p>flight one</p><p>flight one</p><p>flight one</p><p>flight one</p></div>'
 	document.getElementById('results-container').innerHTML = innerhtml;
