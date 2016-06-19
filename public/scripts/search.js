@@ -125,7 +125,7 @@ function renderTabs(when){
  	// create html for tabs now that we have correct dates.
  	innerhtml += "<div class='tab-item' style='display:inline-block;' onclick='search(&quot;"+firstTab.toString()+"&quot;)'>"+firstTab+"</div>";
  	innerhtml += "<div class='tab-item' style='display:inline-block;' onclick='search(&quot;"+secondTab+"&quot;)'>"+secondTab+"</div>";
-	innerhtml += "<div class='tab-item selected' style='display:inline-block;' onclick='search(&quot;"+thirdTab+"&quot;)'>"+thirdTab+"</div>";
+	innerhtml += "<div class='tab-item selected' style='display:inline-block;'>"+thirdTab+"</div>";
 	innerhtml += "<div class='tab-item' style='display:inline-block;' onclick='search(&quot;"+forthTab+"&quot;)'>"+forthTab+"</div>";
 	innerhtml += "<div class='tab-item' style='display:inline-block;' onclick='search(&quot;"+fifthTab+"&quot;)'>"+fifthTab+"</div>";
 	
