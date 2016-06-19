@@ -1,0 +1,138 @@
+*{
+	font-family: Helvetica;
+}
+.search-container{
+	border: 1px solid #aaa;
+	width:400px;
+	margin-left:auto;
+	margin-right:auto;
+	border-radius: 5px;
+	padding: 20px;
+	background: #eee;
+
+}
+
+.title{
+	color: #666;
+	width: 100%;
+	text-align: center;
+}
+.title.left{
+	color: #666;
+	width: 100%;
+	text-align: left;
+	margin-left:20px;
+}
+.input{
+	display: block;
+	width:100%;
+}
+.input h4{
+	color:#666;
+}
+.input input{
+	line-height: 20px;
+	font-size: 20px;
+	height:40px;
+	width:100%;
+}
+.search{
+	background-color:#387ef5;
+	width:100%;
+	border: 1px solid #0c60ee;
+	color:white;
+	font-size:20px;
+	border-radius: 3px;
+	padding:10px;
+}
+
+
+
+
+
+.results-container{
+
+}
+.search-container.with-results{
+	width:890px !important;
+	text-align: center;
+	height: 100px;
+	max-width: 890px;
+	padding: 20px 0px;
+}
+
+.input-with-results{
+	width: 20% !important;
+	float: left !important;
+	margin-right:10px !important;
+
+}
+
+.float-left{
+	float: left;
+	margin-right: 5px;
+}
+
+.float-left-to-title{
+	float: left;
+	margin-right: 5px;
+	margin-left:20px !important;
+}
+
+.search-button-results{
+	width:15%;
+	float: left;
+	background-color:#387ef5;
+	border: 1px solid #0c60ee;
+	color:white;
+	font-size:20px;
+	border-radius: 3px;
+	padding:8px;
+	margin-top: 5px;
+}
+.results-container{
+	width:890px;
+	max-width: 890px;
+	margin-left:auto;
+	margin-right:auto;
+	border-radius: 5px;
+	border: 1px solid #aaa;
+	margin-top: 10px;
+	color: #666;
+}
+.results-container.hide{
+	display: none !important;
+}
+.tabs{
+	width: 100%;
+	text-align: center;
+}
+.tab-item{
+	padding:20px;
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
+	cursor: pointer;
+	font-size: 20px;
+}
+.tab-item.selected{
+	padding:20px;
+	background: #eee;
+	cursor: pointer;
+	font-size: 20px;
+}
+.flights-container{
+	padding:20px;
+	background: #eee;
+}
+.datepicker-with-results{
+	float: right;
+}
+/*used to disable chromes built in datepicker. Would like to use jquery ui's one to ensure browser compatability */
+.unstyled::-webkit-inner-spin-button,
+.unstyled::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+.input-invalid{
+	border-color: red !important;
+}

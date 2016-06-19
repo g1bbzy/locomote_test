@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Flight Search - Test</title>
+		<link rel="stylesheet" type="text/css" href="http://localhost:8080/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="http://localhost:8080/style.css">
+		<link rel="stylesheet" type="text/css" href="http://localhost:8080/jquery-ui.min.css">
+		
+		<script src="http://localhost:8080/scripts/search.js"></script>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="http://localhost:8080/scripts/jquery-ui.min.js"></script>
+		<script src="http://localhost:8080/scripts/jquery.blockUI.js"></script>
+		<script src="http://localhost:8080/scripts/utility-functions.js"></script>
+		
+	</head>
+	<body>
+		<div id="search-container" class="search-container">
+			<div id="title" class="title">
+				<h2 id="title">Flight Search</h2>
+			</div>
+			<label for="from-destination" class="input from-destination" id="label-from">
+				<h4 id="from-title">From</h4>
+				<input type="text" placeholder="Melbourne" id="from-destination">
+			</label>
+			<label class="input to-destination" id="label-to">
+				<h4 id="to-title">To</h4>
+				<input type="text" placeholder="Sydney" id="to-destination">
+			</label>
+			<label class="input date" id="label-when">
+				<h4 id="date-title">Date</h4>
+				<input type="text" id="date-picker" class="unstyled">
+			</label>
+			<button id="search-button" class="search" onClick="search()">Search</button>
+		</div>
+		<div id="results-container" class="results-container">
+			<h2 style="margin-left:20px;">Results</h2>
+		</div>
+	</body>
+		
+</html>
