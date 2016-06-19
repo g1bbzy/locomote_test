@@ -17,4 +17,4 @@ In your browser, navigate to http://localhost:8080/
 This will serve up the front end part of this test.
 The backend is located in ~/server.js
 
-Front end tested in Chrome, IE, sarafi
+Front end tested in: Chrome, IE, Safari - osx
