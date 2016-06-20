@@ -53,7 +53,7 @@ $( document ).ready(function() {
 	var fromOnKeyUp = function(value) {
 		
 		if (value.length > 1){
-				$.get("http://localhost:8080/airports?q="+value, function(data, status){
+				$.get("/airports?q="+value, function(data, status){
 					var airports = [];
 			        for (var i = 0; i < data.length; i++) {
 			        	airports.push(data[i].airportName);
@@ -75,7 +75,7 @@ $( document ).ready(function() {
 	var toOnKeyUp = function(value) {
 		if (value.length > 1){
 			console.log(value);
-			$.get("http://localhost:8080/airports?q="+value, function(data, status){
+			$.get("/airports?q="+value, function(data, status){
 				var airports = [];
 		        for (var i = 0; i < data.length; i++) {
 		        	airports.push(data[i].airportName);

@@ -31,17 +31,17 @@ function search(date){
 
 	if (isValidDate(when)){
 		$.blockUI({message: '<h1>Just a moment...</h1>', css: { backgroundColor: 'none', color: '#fff', border: 'none'} });
-		$.get("http://localhost:8080/airports?q="+from_destination, function(data, status){
+		$.get("/airports?q="+from_destination, function(data, status){
 			// make sure one result is returned to garentee correct airport selection
 			if (data.length == 1){
 
 				from_code = data[0].airportCode;
-				$.get("http://localhost:8080/airports?q="+to_destination, function(data, status){
+				$.get("/airports?q="+to_destination, function(data, status){
 					// make sure one result is return to garentee the right code
 					if (data.length == 1){
 						to_code = data[0].airportCode;
 
-						$.get("http://localhost:8080/search?date="+when.toString()+"&to="+to_code+"&from="+from_code, function(data, status){
+						$.get("/search?date="+when.toString()+"&to="+to_code+"&from="+from_code, function(data, status){
 							//style the page to support results
 							document.getElementById('search-container').className = 'search-container with-results';
 							document.getElementById('from-destination').className = 'input-with-results';
