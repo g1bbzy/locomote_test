@@ -29,42 +29,64 @@ $( document ).ready(function() {
 
 	// set the format of the date picker to: year, month, day
 	$( "#date-picker" ).datepicker({ dateFormat: 'yy-mm-dd'});
-
+	var fromTimer;
+	var toTimer;
 	// Add an event listners to input boxes
 	$('#from-destination').keyup(function() {
-	    fromOnKeyUp($('#from-destination').val());
+		var value = $('#from-destination').val()
+		clearTimeout(fromTimer);
+		fromTimer = setTimeout(function(){
+			fromOnKeyUp(value);
+		}, 200);
+	    
 	});
 	$('#to-destination').keyup(function() {
-	    toOnKeyUp($('#to-destination').val());
+		var value = $('#to-destination').val()
+		clearTimeout(toTimer);
+		toTimer = setTimeout(function(){
+			toOnKeyUp(value);
+		}, 200);
+	    
 	});
 
 	// Ajax request for autocomplete/suggestions
 	var fromOnKeyUp = function(value) {
-		if (value.length >= 2){
-			$.get("http://localhost:8080/airports?q="+value, function(data, status){
-				var airports = [];
-		        for (var i = 0; i < data.length; i++) {
-		        	airports.push(data[i].airportName);
-		        };
-		        // when data comes back, add it to suggestions dropdown
-		        $( "#from-destination" ).autocomplete({
-				  source: airports
-				});
-		    });
+		
+		if (value.length > 1){
+				$.get("http://localhost:8080/airports?q="+value, function(data, status){
+					var airports = [];
+			        for (var i = 0; i < data.length; i++) {
+			        	airports.push(data[i].airportName);
+			        };
+			        console.log("called");
+			        console.log(airports);
+			        // when data comes back, add it to suggestions dropdown
+			        $(function() {
+				        $( "#from-destination" ).autocomplete({
+					    	source: airports
+						});
+						$( "#from-destination" ).autocomplete("search", value);
+					})
+			    });
+			
 		}		
 	}
 	// Ajax request for autocomplete/suggestions
 	var toOnKeyUp = function(value) {
-		if (value.length >= 2){
+		if (value.length > 1){
+			console.log(value);
 			$.get("http://localhost:8080/airports?q="+value, function(data, status){
 				var airports = [];
 		        for (var i = 0; i < data.length; i++) {
 		        	airports.push(data[i].airportName);
 		        };
 		        // when data comes back, add it to suggestions dropdown
-		        $( "#to-destination" ).autocomplete({
-				  source: airports
-				});
+		        $(function() {
+			        $( "#to-destination" ).autocomplete({
+				    	source: airports
+					});
+					$( "#to-destination" ).autocomplete("search", value);
+				})
 		    });
 		}		
 	}
